@@ -72,6 +72,28 @@ class ServiceSeeder extends Seeder
                 'label' => 'Supply Services',
                 'palette' => ['#0e7490', '#22d3ee'],
             ],
+            [
+                'title' => 'Software Development & IT Solutions',
+                'icon' => 'code',
+                'short_desc' => 'Custom web & mobile application development, UI/UX design, cloud deployment and managed IT services by a skilled engineering team.',
+                'description' => "We help organizations digitize and scale with end-to-end software development services — from requirement analysis and architecture design to development, testing, deployment and long-term maintenance.\n\nOur engineers build secure, maintainable and performance-optimized applications for web, mobile and desktop using modern frameworks and DevOps best practices. We also provide UI/UX design, API integration, database design and cloud infrastructure management to cover the entire product lifecycle.",
+                'features' => [
+                    'Custom Web Application Development',
+                    'Mobile Application Development (Android & iOS)',
+                    'UI/UX Design & Prototyping',
+                    'E-Commerce & Marketplace Solutions',
+                    'ERP, CRM & Business Management Systems',
+                    'API Design, Integration & Third-Party Services',
+                    'Database Design & Optimization',
+                    'Cloud Services & DevOps (AWS, Azure, GCP)',
+                    'Website Development & Maintenance',
+                    'Cybersecurity & Data Protection',
+                    'IT Consultation & Managed IT Support',
+                ],
+                'file' => 'services/software.svg',
+                'label' => 'Software Development',
+                'palette' => ['#312e81', '#4f46e5'],
+            ],
         ];
 
         foreach ($services as $i => $service) {
