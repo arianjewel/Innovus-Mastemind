@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class Category extends SluggableModel
+{
+    use HasFactory;
+
+    public function getSluggableSource(): string
+    {
+        return 'name';
+    }
+
+    protected $fillable = [
+        'name', 'slug', 'description', 'image_path', 'sort_order', 'is_active',
+    ];
+
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+        ];
+    }
+
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function scopeActive(Builder $query): Builder
+    {
+        return $query->where('is_active', true)->orderBy('sort_order');
+    }
+}
