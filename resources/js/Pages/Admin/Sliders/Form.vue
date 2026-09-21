@@ -24,7 +24,7 @@ const form = useForm({
 
 const submit = () => {
     if (isEdit) {
-        form.post(route('admin.sliders.update', props.slider.id), {
+        form.put(route('admin.sliders.update', props.slider.id), {
             preserveScroll: true,
             onSuccess: () => form.reset('image'),
         });

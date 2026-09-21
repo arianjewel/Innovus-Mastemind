@@ -28,7 +28,7 @@ const onPdfPick = (e) => {
 
 const submit = () => {
     if (isEdit) {
-        form.post(route('admin.brochures.update', props.brochure.id), {
+        form.put(route('admin.brochures.update', props.brochure.id), {
             preserveScroll: true,
         });
     } else {

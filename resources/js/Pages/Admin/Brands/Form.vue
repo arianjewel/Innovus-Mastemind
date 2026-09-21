@@ -21,7 +21,7 @@ const form = useForm({
 
 const submit = () => {
     if (isEdit) {
-        form.post(route('admin.brands.update', props.brand.id), {
+        form.put(route('admin.brands.update', props.brand.id), {
             preserveScroll: true,
             onSuccess: () => form.reset('logo'),
         });

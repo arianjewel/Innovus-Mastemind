@@ -21,7 +21,7 @@ const form = useForm({
 
 const submit = () => {
     if (isEdit) {
-        form.post(route('admin.clients.update', props.client.id), {
+        form.put(route('admin.clients.update', props.client.id), {
             preserveScroll: true,
             onSuccess: () => form.reset('logo'),
         });

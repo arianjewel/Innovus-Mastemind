@@ -36,7 +36,7 @@ const typeOptions = [
 
 const submit = () => {
     if (isEdit) {
-        form.post(route('admin.team-members.update', props.member.id), {
+        form.put(route('admin.team-members.update', props.member.id), {
             preserveScroll: true,
             onSuccess: () => form.reset('photo'),
         });

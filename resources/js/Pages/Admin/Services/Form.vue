@@ -26,7 +26,7 @@ const form = useForm({
 
 const submit = () => {
     if (isEdit) {
-        form.post(route('admin.services.update', props.service.id), {
+        form.put(route('admin.services.update', props.service.id), {
             preserveScroll: true,
             onSuccess: () => form.reset('image'),
         });

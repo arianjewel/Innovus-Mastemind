@@ -22,7 +22,7 @@ const form = useForm({
 
 const submit = () => {
     if (isEdit) {
-        form.post(route('admin.categories.update', props.category.id), {
+        form.put(route('admin.categories.update', props.category.id), {
             preserveScroll: true,
             onSuccess: () => form.reset('image'),
         });
