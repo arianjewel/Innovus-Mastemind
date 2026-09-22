@@ -1,0 +1,24 @@
+# ------------------------------------------------------------------
+# Root .htaccess for cPanel hosting
+# ------------------------------------------------------------------
+# Laravel lives at the site root; public/ is its web-root directory.
+# This file routes every request into the public/ folder so you can
+# simply extract the project zip directly into public_html.
+
+# Force HTTPS — uncomment once your SSL certificate is installed
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTPS} off
+#     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Block direct access to sensitive project files
+    RewriteRule ^(\.env.*|\.git.*|composer\.(json|lock)|artisan|_env.*)$ - [F,L]
+    RewriteRule ^(app|bootstrap|config|database|resources|routes|tests|vendor|node_modules)/ - [F,L]
+
+    # Route every request to the Laravel public/ directory
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
