@@ -9,6 +9,7 @@ use App\Http\Controllers\Public\InquiryController;
 use App\Http\Controllers\Public\ProductController as PublicProductController;
 use App\Http\Controllers\Public\ProjectController as PublicProjectController;
 use App\Http\Controllers\Public\ServiceController as PublicServiceController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +38,13 @@ Route::get('/project-documents/{document}/download', [\App\Http\Controllers\Publ
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+// TEMPORARY helper for cPanel (no SSH). Visit /storage-link ONCE to create the
+// public/storage symlink, then DELETE this route before going live.
+Route::get('/storage-link', function () {
+    $exit = Artisan::call('storage:link');
+    return response('storage:link finished (exit code ' . $exit . '). Symfony link created.' . PHP_EOL . Artisan::output());
+});
 
 /*
 |--------------------------------------------------------------------------
