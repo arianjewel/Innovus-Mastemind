@@ -19,6 +19,11 @@
     RewriteRule ^(\.env.*|\.git.*|composer\.(json|lock)|artisan|_env.*)$ - [F,L]
     RewriteRule ^(app|bootstrap|config|database|resources|routes|tests|vendor|node_modules)/ - [F,L]
 
+    # Serve uploaded files from storage/app/public directly.
+    # [END] stops all further rewriting so this path is not re-matched
+    # by the catch-all rule below (avoids an infinite rewrite loop).
+    RewriteRule ^storage/(.*)$ storage/app/public/$1 [END]
+
     # Route every request to the Laravel public/ directory
     RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
